@@ -158,18 +158,17 @@ def normalize_passed_arguments(options):
         raise RuntimeError(msg)
 
     if options.docker:
+        import docker
         options.test_env = ssg_test_suite.test_env.DockerTestEnv(
             options.scanning_mode, options.docker)
         logging.info(
-            "The base image option has been specified, "
-            "choosing Docker-based test environment.")
+            "Executing on Docker-based test environment.")
     else:
         hypervisor, domain_name = options.libvirt
         options.test_env = ssg_test_suite.test_env.VMTestEnv(
             options.scanning_mode, hypervisor, domain_name)
         logging.info(
-            "The base image option has not been specified, "
-            "choosing libvirt-based test environment.")
+            "Executing on libvirt-based test environment.")
 
 
 def main():

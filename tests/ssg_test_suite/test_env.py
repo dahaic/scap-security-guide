@@ -5,7 +5,6 @@ import sys
 import os
 import time
 
-import docker
 
 import ssg_test_suite
 from ssg_test_suite.virt import SnapshotStack
